@@ -1,0 +1,2441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talpapis - Mecánica a Domicilio Talpa de Allende</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/car-service.png">
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --secondary: #004E89;
+            --accent: #00A896;
+            --light: #F8F9FA;
+            --dark: #343A40;
+            --gray: #6C757D;
+            --success: #28A745;
+            --warning: #FFC107;
+            --danger: #DC3545;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7fa;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header y Navegación */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #003a6a;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .btn-accent:hover {
+            background-color: #008a7a;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1da851;
+        }
+
+        .btn-emergency {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .btn-emergency:hover {
+            background-color: #c82333;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(0, 78, 137, 0.1) 100%);
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .hero-text h1 span {
+            color: var(--primary);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            max-width: 90%;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-hero {
+            background-color: var(--secondary);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .contact-hero .phone {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .contact-hero .phone i {
+            font-size: 1.5rem;
+        }
+
+        .emergency-banner {
+            background-color: var(--danger);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .emergency-banner h4 {
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .features {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-icon {
+            background-color: rgba(255, 107, 53, 0.1);
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        /* Sección de Chatbot */
+        .chatbot-section {
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+            background-color: white;
+        }
+
+        .chatbot-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .chatbot-header {
+            background-color: var(--secondary);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chatbot-header h2 {
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .chatbot-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--success);
+        }
+
+        .chatbot-body {
+            height: 400px;
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .chat-message {
+            max-width: 80%;
+            padding: 1rem;
+            border-radius: 18px;
+            position: relative;
+        }
+
+        .chat-message.bot {
+            background-color: white;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-message.user {
+            background-color: var(--primary);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-message .message-text {
+            margin-bottom: 0.5rem;
+        }
+
+        .chat-message .message-time {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            text-align: right;
+        }
+
+        .chat-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .chat-option {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .chat-option:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .chatbot-footer {
+            background-color: white;
+            padding: 1.5rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Sección de Tienda */
+        .store-section {
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, rgba(0, 78, 137, 0.05) 0%, rgba(255, 107, 53, 0.05) 100%);
+        }
+
+        .store-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .category-btn {
+            background-color: white;
+            border: 2px solid #ddd;
+            border-radius: 30px;
+            padding: 0.5rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .category-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            height: 180px;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .product-image i {
+            font-size: 4rem;
+            color: var(--secondary);
+        }
+
+        .product-body {
+            padding: 1.5rem;
+        }
+
+        .product-body h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .cart-summary {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-top: 3rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cart-items {
+            margin-bottom: 1.5rem;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding-top: 1rem;
+            border-top: 2px solid #eee;
+        }
+
+        /* Sección de Servicios de Emergencia */
+        .emergency-section {
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .emergency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .emergency-card {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 5px solid var(--danger);
+            text-align: center;
+        }
+
+        .emergency-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .emergency-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: rgba(220, 53, 69, 0.1);
+            color: var(--danger);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .emergency-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .emergency-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .emergency-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--danger);
+            margin-bottom: 1rem;
+        }
+
+        /* Sección de Revisión Pre-viaje */
+        .pretrip-section {
+            background-color: white;
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .pretrip-checklist {
+            max-width: 800px;
+            margin: 2rem auto 0;
+            background-color: #f8f9fa;
+            border-radius: var(--radius);
+            padding: 2rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+
+        .checklist-item label {
+            flex: 1;
+            cursor: pointer;
+        }
+
+        .checklist-status {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .checklist-status.pending {
+            background-color: rgba(255, 193, 7, 0.2);
+            color: var(--warning);
+        }
+
+        .checklist-status.checked {
+            background-color: rgba(40, 167, 69, 0.2);
+            color: var(--success);
+        }
+
+        /* Sección de Servicios */
+        .services-section {
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            background-color: rgba(0, 78, 137, 0.1);
+            color: var(--secondary);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .service-price {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Sección de Mantenimiento Preventivo */
+        .maintenance-section {
+            background-color: white;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+
+        /* Sección de Ubicación */
+        .location-section {
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(0, 78, 137, 0.05) 100%);
+        }
+
+        /* Sección de Perfil */
+        .profile-section {
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: var(--radius);
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .modal-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1.5rem;
+            border-radius: var(--radius) var(--radius) 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin-bottom: 0;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        /* Notificaciones */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 1rem 1.5rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 3000;
+            transform: translateX(120%);
+            transition: transform 0.4s ease;
+            max-width: 350px;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-text {
+                text-align: center;
+            }
+            
+            .hero-text p {
+                max-width: 100%;
+            }
+            
+            .features {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .auth-buttons, .user-menu {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .emergency-banner {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .chatbot-footer {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .store-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .emergency-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Botón flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Botón flotante de Chatbot */
+        .chatbot-float {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .chatbot-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .chatbot-float .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--danger);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header y Navegación -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <span>Talpapis</span>
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="#inicio" class="active">Inicio</a></li>
+                    <li><a href="#chatbot">Chatbot</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#tienda">Tienda</a></li>
+                    <li><a href="#emergencia">Emergencias</a></li>
+                    <li><a href="#previo">Pre-viaje</a></li>
+                    <li><a href="#ubicacion">Ubicación</a></li>
+                </ul>
+                
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <div class="user-avatar" id="userAvatar">
+                        JS
+                    </div>
+                    <div class="auth-buttons">
+                        <button class="btn btn-outline" id="profileBtn">Mi Perfil</button>
+                        <button class="btn btn-primary" id="logoutBtn">Cerrar Sesión</button>
+                    </div>
+                </div>
+                
+                <div class="auth-buttons" id="guestButtons">
+                    <button class="btn btn-outline" id="loginBtn">Iniciar Sesión</button>
+                    <button class="btn btn-primary" id="registerBtn">Registrarse</button>
+                </div>
+                
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Botones flotantes -->
+    <div class="whatsapp-float" id="whatsappFloat" title="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <div class="chatbot-float" id="chatbotFloat" title="Abrir Chatbot de Diagnóstico">
+        <i class="fas fa-robot"></i>
+        <div class="notification-badge" id="chatbotBadge" style="display: none;">1</div>
+    </div>
+
+    <!-- Sección Hero -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Mecánica a domicilio <span>en Talpa de Allende, Jalisco</span></h1>
+                    <p>Servicio completo de mecánica automotriz con diagnóstico por chatbot, venta de refacciones, servicios de emergencia y revisión pre-viaje.</p>
+                    
+                    <div class="emergency-banner">
+                        <h4><i class="fas fa-exclamation-triangle"></i> EMERGENCIAS 24/7</h4>
+                        <button class="btn btn-emergency" id="emergencyCallBtn">
+                            <i class="fas fa-phone-alt"></i> Llamar al 388 103 9121
+                        </button>
+                    </div>
+                    
+                    <div class="contact-hero">
+                        <div class="phone">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>388 103 9121</span>
+                        </div>
+                        <p>WhatsApp para diagnóstico rápido y cotizaciones</p>
+                        <button class="btn btn-whatsapp" id="whatsappBtn">
+                            <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                        </button>
+                    </div>
+                    
+                    <div class="features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div>
+                                <h4>Chatbot Diagnóstico</h4>
+                                <p>Diagnóstico rápido de fallas</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <div>
+                                <h4>Venta de Refacciones</h4>
+                                <p>Partes originales y tuning</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-truck-pickup"></i>
+                            </div>
+                            <div>
+                                <h4>Grúa y Emergencias</h4>
+                                <p>Servicio 24/7 en carretera</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Mecánico trabajando en un auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Chatbot -->
+    <section class="chatbot-section" id="chatbot">
+        <div class="container">
+            <div class="section-title">
+                <h2>Chatbot de Diagnóstico Rápido</h2>
+                <p>Describe los síntomas de tu vehículo y te ayudaremos a identificar el problema</p>
+            </div>
+            
+            <div class="chatbot-container">
+                <div class="chatbot-header">
+                    <h2><i class="fas fa-robot"></i> Asistente Mecánico Talpapis</h2>
+                    <div class="chatbot-status">
+                        <div class="status-dot"></div>
+                        <span>En línea</span>
+                    </div>
+                </div>
+                
+                <div class="chatbot-body" id="chatbotBody">
+                    <div class="chat-message bot">
+                        <div class="message-text">
+                            ¡Hola! Soy tu asistente mecánico virtual. ¿Qué problema presenta tu vehículo? Puedes describir los síntomas o seleccionar una opción:
+                        </div>
+                        <div class="chat-options">
+                            <div class="chat-option" data-option="engine">Motor no enciende</div>
+                            <div class="chat-option" data-option="noise">Ruidos extraños</div>
+                            <div class="chat-option" data-option="brakes">Problemas con frenos</div>
+                            <div class="chat-option" data-option="battery">Batería descargada</div>
+                            <div class="chat-option" data-option="lights">Luces no funcionan</div>
+                            <div class="chat-option" data-option="overheat">Sobrecalentamiento</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chatbot-footer">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Escribe tu problema aquí...">
+                    <button class="btn btn-primary" id="sendChatBtn">
+                        <i class="fas fa-paper-plane"></i> Enviar
+                    </button>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <p>¿Necesitas ayuda inmediata? <button class="btn btn-emergency" id="emergencyChatBtn">Solicitar Servicio de Emergencia</button></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Tienda -->
+    <section class="store-section" id="tienda">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tienda de Partes y Refacciones</h2>
+                <p>Partes originales, tuning y accesorios para tu vehículo con entrega en Talpa de Allende</p>
+            </div>
+            
+            <div class="store-categories">
+                <button class="category-btn active" data-category="all">Todo</button>
+                <button class="category-btn" data-category="tuning">Tuning</button>
+                <button class="category-btn" data-category="engine">Motor</button>
+                <button class="category-btn" data-category="brakes">Frenos</button>
+                <button class="category-btn" data-category="electrical">Eléctrico</button>
+                <button class="category-btn" data-category="accessories">Accesorios</button>
+            </div>
+            
+            <div class="store-grid" id="storeGrid">
+                <!-- Productos cargados dinámicamente -->
+            </div>
+            
+            <div class="cart-summary">
+                <h3>Tu Carrito de Compras</h3>
+                <div class="cart-items" id="cartItems">
+                    <p>No hay productos en el carrito</p>
+                </div>
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <button class="btn btn-primary btn-block" id="checkoutBtn" disabled>
+                        <i class="fas fa-shopping-cart"></i> Proceder al Pago
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios de Emergencia -->
+    <section class="emergency-section" id="emergencia">
+        <div class="container">
+            <div class="section-title">
+                <h2>Servicios de Emergencia 24/7</h2>
+                <p>Ayuda inmediata para problemas en carretera en Talpa de Allende y alrededores</p>
+            </div>
+            
+            <div class="emergency-grid">
+                <div class="emergency-card">
+                    <div class="emergency-icon">
+                        <i class="fas fa-truck-pickup"></i>
+                    </div>
+                    <h3>Servicio de Grúa</h3>
+                    <p>Transporte de vehículos averiados a taller o domicilio. Cobertura en Talpa de Allende y hasta 50km a la redonda.</p>
+                    <div class="emergency-number">$800 - $1,500</div>
+                    <button class="btn btn-emergency" data-service="grúa">
+                        <i class="fas fa-phone-alt"></i> Solicitar Grúa
+                    </button>
+                </div>
+                
+                <div class="emergency-card">
+                    <div class="emergency-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Reparación en Carretera</h3>
+                    <p>Mecánico en camino para reparaciones de emergencia en sitio. Cambio de llanta, batería, problemas eléctricos básicos.</p>
+                    <div class="emergency-number">Desde $500</div>
+                    <button class="btn btn-emergency" data-service="reparación_carretera">
+                        <i class="fas fa-wrench"></i> Solicitar Ayuda
+                    </button>
+                </div>
+                
+                <div class="emergency-card">
+                    <div class="emergency-icon">
+                        <i class="fas fa-gas-pump"></i>
+                    </div>
+                    <h3>Entrega de Combustible</h3>
+                    <p>¿Te quedaste sin gasolina? Te llevamos combustible a tu ubicación. Disponible las 24 horas.</p>
+                    <div class="emergency-number">$300 + combustible</div>
+                    <button class="btn btn-emergency" data-service="combustible">
+                        <i class="fas fa-gas-pump"></i> Solicitar Combustible
+                    </button>
+                </div>
+                
+                <div class="emergency-card">
+                    <div class="emergency-icon">
+                        <i class="fas fa-car-battery"></i>
+                    </div>
+                    <h3>Pass de Arranque</h3>
+                    <p>Batería descargada? Llevamos arranque rápido con pinzas o cambio de batería en sitio.</p>
+                    <div class="emergency-number">$400 - $1,200</div>
+                    <button class="btn btn-emergency" data-service="arranque">
+                        <i class="fas fa-bolt"></i> Solicitar Arranque
+                    </button>
+                </div>
+                
+                <div class="emergency-card">
+                    <div class="emergency-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3>Llaves encerradas</h3>
+                    <p>¿Cerraste las llaves dentro del auto? Te ayudamos a abrir tu vehículo sin dañarlo.</p>
+                    <div class="emergency-number">$600 - $900</div>
+                    <button class="btn btn-emergency" data-service="llaves">
+                        <i class="fas fa-unlock"></i> Solicitar Ayuda
+                    </button>
+                </div>
+                
+                <div class="emergency-card">
+                    <div class="emergency-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Diagnóstico de Emergencia</h3>
+                    <p>Diagnóstico rápido en sitio para identificar fallas críticas que impidan circular.</p>
+                    <div class="emergency-number">$350</div>
+                    <button class="btn btn-emergency" data-service="diagnóstico">
+                        <i class="fas fa-stethoscope"></i> Solicitar Diagnóstico
+                    </button>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <div class="emergency-number" style="font-size: 2rem;">Línea de Emergencias 24/7: 388 103 9121</div>
+                <p style="margin-top: 1rem;">Disponibles en Talpa de Allende, Jalisco y carreteras aledañas</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Revisión Pre-viaje -->
+    <section class="pretrip-section" id="previo">
+        <div class="container">
+            <div class="section-title">
+                <h2>Revisión Pre-viaje</h2>
+                <p>Chequeo completo antes de salir a carretera. ¡Viaja seguro por los caminos de Jalisco!</p>
+            </div>
+            
+            <div class="pretrip-checklist">
+                <h3>Checklist de Seguridad para Viajes</h3>
+                <p>Marca los puntos que requieren atención antes de tu viaje:</p>
+                
+                <div class="checklist-item">
+                    <input type="checkbox" id="check1" data-price="150">
+                    <label for="check1">Presión y estado de llantas (incluída la de refacción)</label>
+                    <span class="checklist-status pending">Pendiente</span>
+                </div>
+                
+                <div class="checklist-item">
+                    <input type="checkbox" id="check2" data-price="200">
+                    <label for="check2">Niveles de fluidos (aceite, refrigerante, frenos, dirección)</label>
+                    <span class="checklist-status pending">Pendiente</span>
+                </div>
+                
+                <div class="checklist-item">
+                    <input type="checkbox" id="check3" data-price="300">
+                    <label for="check3">Estado de frenos (pastillas, discos, líquido)</label>
+                    <span class="checklist-status pending">Pendiente</span>
+                </div>
+                
+                <div class="checklist-item">
+                    <input type="checkbox" id="check4" data-price="180">
+                    <label for="check4">Funcionamiento de todas las luces (altas, bajas, direccionales, freno)</label>
+                    <span class="checklist-status pending">Pendiente</span>
+                </div>
+                
+                <div class="checklist-item">
+                    <input type="checkbox" id="check5" data-price="250">
+                    <label for="check5">Estado de la batería y sistema de carga</label>
+                    <span class="checklist-status pending">Pendiente</span>
+                </div>
+                
+                <div class="checklist-item">
+                    <input type="checkbox" id="check6" data-price="220">
+                    <label for="check6">Condición de limpiaparabrisas y líquido</label>
+                    <span class="checklist-status pending">Pendiente</span>
+                </div>
+                
+                <div class="checklist-item">
+                    <input type="checkbox" id="check7" data-price="350">
+                    <label for="check7">Alineación y balanceo</label>
+                    <span class="checklist-status pending">Pendiente</span>
+                </div>
+                
+                <div class="checklist-item">
+                    <input type="checkbox" id="check8" data-price="400">
+                    <label for="check8">Suspensión y amortiguadores</label>
+                    <span class="checklist-status pending">Pendiente</span>
+                </div>
+                
+                <div style="margin-top: 2rem; padding-top: 1rem; border-top: 2px solid #eee;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h4>Paquete Completo Pre-viaje</h4>
+                            <p>Incluye todos los puntos de la lista</p>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">$1,500</div>
+                            <div style="text-decoration: line-through; color: var(--gray);">$2,050</div>
+                        </div>
+                        <button class="btn btn-primary" id="fullPretripBtn">
+                            <i class="fas fa-road"></i> Solicitar Paquete Completo
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <h3>¿Vas a salir de viaje por carretera?</h3>
+                <p>La revisión pre-viaje puede prevenir el 80% de las fallas en carretera. ¡Programa tu cita hoy!</p>
+                <button class="btn btn-whatsapp" id="pretripWhatsappBtn" style="margin-top: 1rem;">
+                    <i class="fab fa-whatsapp"></i> Agendar por WhatsApp
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section class="services-section" id="servicios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios Principales</h2>
+                <p>Servicios completos de mecánica automotriz en Talpa de Allende, Jalisco</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-oil-can"></i>
+                    </div>
+                    <h3>Cambio de Aceite</h3>
+                    <p>Cambio de aceite y filtro con productos de alta calidad. Incluye revisión de niveles de fluidos.</p>
+                    <div class="service-price">$720</div>
+                    <button class="btn btn-outline" data-service="Cambio de Aceite">Solicitar</button>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tire"></i>
+                    </div>
+                    <h3>Llantas y Frenos</h3>
+                    <p>Reemplazo de llantas, alineación, balanceo y revisión completa del sistema de frenos.</p>
+                    <div class="service-price">Desde $1,200</div>
+                    <button class="btn btn-outline" data-service="Llantas y Frenos">Solicitar</button>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-roller"></i>
+                    </div>
+                    <h3>Enderezado y Pintura</h3>
+                    <p>Reparación de golpes, abolladuras y pintura para dejar tu vehículo como nuevo.</p>
+                    <div class="service-price">Desde $2,500</div>
+                    <button class="btn btn-outline" data-service="Enderezado y Pintura">Solicitar</button>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Tuning y Performance</h3>
+                    <p>Modificaciones para mejorar rendimiento, estética y sonido de tu vehículo.</p>
+                    <div class="service-price">Consulta precio</div>
+                    <button class="btn btn-outline" data-service="Tuning">Solicitar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Ubicación -->
+    <section class="location-section" id="ubicacion">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ubicados en Talpa de Allende, Jalisco</h2>
+                <p>Servimos a toda la región de la Sierra Occidental de Jalisco</p>
+            </div>
+            
+            <div class="location-content">
+                <div class="location-info">
+                    <h3>Área de Cobertura</h3>
+                    <p>Nuestro servicio está disponible en las siguientes zonas:</p>
+                    
+                    <ul style="margin-top: 1rem; margin-bottom: 2rem; list-style-position: inside;">
+                        <li><strong>Talpa de Allende:</strong> Centro, Barrio de San José, Colonia Las Flores</li>
+                        <li><strong>Comunidades cercanas:</strong> Cabos, Desmoronado, El Cuale</li>
+                        <li><strong>Carreteras aledañas:</strong> Talpa - Mascota, Talpa - Guadalajara</li>
+                        <li><strong>Hasta 50km</strong> a la redonda de Talpa de Allende</li>
+                    </ul>
+                    
+                    <h3>Horarios de Servicio</h3>
+                    <ul style="margin-top: 1rem; margin-bottom: 2rem;">
+                        <li><strong>Servicios programados:</strong> Lunes a Sábado 8:00 AM - 8:00 PM</li>
+                        <li><strong>Emergencias 24/7:</strong> Disponible todos los días</li>
+                        <li><strong>Tienda de refacciones:</strong> Lunes a Viernes 9:00 AM - 7:00 PM</li>
+                    </ul>
+                    
+                    <h3>Contacto Principal</h3>
+                    <div style="background-color: white; padding: 1.5rem; border-radius: var(--radius); margin-top: 1rem;">
+                        <p><i class="fas fa-phone-alt"></i> <strong>Teléfono/Emergencias:</strong> 388 103 9121</p>
+                        <p><i class="fab fa-whatsapp"></i> <strong>WhatsApp:</strong> 388 103 9121</p>
+                        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> info@talpapis.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> <strong>Base de operaciones:</strong> Talpa de Allende, Jalisco</p>
+                    </div>
+                </div>
+                
+                <div class="location-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119031.17216852815!2d-104.85712389726563!3d20.380068799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842f3997f5df39d3%3A0x66a19d0712f52074!2sTalpa%20de%20Allende%2C%20Jal.!5e0!3m2!1ses!2smx!4v1700000000000!5m2!1ses!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <span>Talpapis</span>
+                    </div>
+                    <p>Servicio completo de mecánica automotriz en Talpa de Allende, Jalisco. Chatbot de diagnóstico, venta de refacciones, servicios de emergencia 24/7 y revisión pre-viaje.</p>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/523881039121" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Servicios</h3>
+                    <ul class="footer-links">
+                        <li><a href="#chatbot">Chatbot de Diagnóstico</a></li>
+                        <li><a href="#tienda">Tienda de Refacciones</a></li>
+                        <li><a href="#emergencia">Servicios de Emergencia</a></li>
+                        <li><a href="#previo">Revisión Pre-viaje</a></li>
+                        <li><a href="#servicios">Mecánica General</a></li>
+                        <li><a href="#servicios">Enderezado y Pintura</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto de Emergencia</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>Emergencias 24/7: 388 103 9121</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>WhatsApp: 388 103 9121</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-truck-pickup"></i>
+                            <span>Servicio de Grúa: 388 103 9121</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Talpa de Allende, Jalisco</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Horarios</h3>
+                    <ul class="footer-links">
+                        <li>Emergencias: 24/7</li>
+                        <li>Atención por WhatsApp: 7:00 AM - 10:00 PM</li>
+                        <li>Tienda: Lunes a Viernes 9:00 AM - 7:00 PM</li>
+                        <li>Servicios programados: Lunes a Sábado 8:00 AM - 8:00 PM</li>
+                        <li>Revisión pre-viaje: Con cita previa</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Talpapis - Mecánica a Domicilio en Talpa de Allende, Jalisco. Todos los derechos reservados.</p>
+                <p style="margin-top: 0.5rem;">Emergencias 24/7: 388 103 9121 | WhatsApp: 388 103 9121</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Emergencia -->
+    <div class="modal" id="emergencyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-exclamation-triangle"></i> Solicitar Servicio de Emergencia</h2>
+                <button class="close-modal" id="closeEmergencyModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="emergencyForm">
+                    <div class="form-group">
+                        <label for="emergencyService">Tipo de Emergencia</label>
+                        <select id="emergencyService" required>
+                            <option value="">Selecciona el servicio</option>
+                            <option value="grúa">Servicio de Grúa</option>
+                            <option value="reparación_carretera">Reparación en Carretera</option>
+                            <option value="combustible">Entrega de Combustible</option>
+                            <option value="arranque">Pass de Arranque</option>
+                            <option value="llaves">Llaves Encerradas</option>
+                            <option value="diagnóstico">Diagnóstico de Emergencia</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="emergencyName">Nombre</label>
+                        <input type="text" id="emergencyName" placeholder="Tu nombre" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="emergencyPhone">Teléfono</label>
+                        <input type="tel" id="emergencyPhone" placeholder="388-" value="388-" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="emergencyLocation">Ubicación Exacta</label>
+                        <textarea id="emergencyLocation" placeholder="Describe tu ubicación exacta, puntos de referencia, carretera y km..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="emergencyDescription">Descripción del Problema</label>
+                        <textarea id="emergencyDescription" placeholder="Describe el problema con tu vehículo..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="emergencyVehicle">Datos del Vehículo</label>
+                        <input type="text" id="emergencyVehicle" placeholder="Marca, modelo, color y placas" required>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-emergency">
+                            <i class="fas fa-phone-alt"></i> Solicitar Ayuda Inmediata
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Compra -->
+    <div class="modal" id="purchaseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-shopping-cart"></i> Confirmar Compra</h2>
+                <button class="close-modal" id="closePurchaseModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="purchaseSummary">
+                    <!-- Resumen de compra -->
+                </div>
+                <form id="purchaseForm">
+                    <div class="form-group">
+                        <label for="purchaseName">Nombre Completo</label>
+                        <input type="text" id="purchaseName" placeholder="Tu nombre" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="purchasePhone">Teléfono</label>
+                        <input type="tel" id="purchasePhone" placeholder="388-" value="388-" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="purchaseAddress">Dirección en Talpa de Allende</label>
+                        <input type="text" id="purchaseAddress" placeholder="Tu dirección para entrega" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="purchaseNotes">Notas adicionales</label>
+                        <textarea id="purchaseNotes" placeholder="Especificaciones del producto, horario de entrega, etc."></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-check-circle"></i> Confirmar Compra
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificación -->
+    <div class="notification" id="notification">
+        <div class="notification-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="notification-content">
+            <h4 id="notificationTitle">Título de la notificación</h4>
+            <p id="notificationMessage">Mensaje de la notificación</p>
+        </div>
+        <button class="close-notification" id="closeNotification">&times;</button>
+    </div>
+
+    <script>
+        // Datos de la aplicación
+        let currentUser = JSON.parse(localStorage.getItem('talpapis_user')) || null;
+        let cart = JSON.parse(localStorage.getItem('talpapis_cart')) || [];
+        
+        // Base de conocimiento del chatbot
+        const chatbotKnowledge = {
+            engine: {
+                symptoms: ["motor no enciende", "no arranca", "no prende", "no da marcha"],
+                questions: [
+                    "¿El motor hace algún sonido al girar la llave?",
+                    "¿Las luces del tablero se encienden?",
+                    "¿Escuchas un clic al intentar arrancar?"
+                ],
+                possibleCauses: [
+                    "Batería descargada o dañada",
+                    "Problema con el motor de arranque",
+                    "Fallo en el sistema de ignición",
+                    "Problema con el combustible"
+                ],
+                solutions: [
+                    "Prueba con pasar corriente o cambiar la batería",
+                    "Revisa el motor de arranque y solenoide",
+                    "Verifica las bujías y cables de alta",
+                    "Revisa la bomba de gasolina y filtro"
+                ],
+                emergency: true
+            },
+            noise: {
+                symptoms: ["ruido", "sonido extraño", "golpeteo", "chirrido"],
+                questions: [
+                    "¿El ruido viene del motor, llantas o suspensión?",
+                    "¿Ocurre solo al acelerar, frenar o todo el tiempo?",
+                    "¿El ruido aumenta con la velocidad?"
+                ],
+                possibleCauses: [
+                    "Rodamiento de rueda dañado",
+                    "Banda serpentina floja o dañada",
+                    "Problema en la suspensión",
+                    "Escape con fuga"
+                ],
+                solutions: [
+                    "Revisa rodamientos y llantas",
+                    "Ajusta o cambia la banda serpentina",
+                    "Inspecciona amortiguadores y bujes",
+                    "Revisa el sistema de escape"
+                ],
+                emergency: false
+            },
+            brakes: {
+                symptoms: ["frenos", "pedal suave", "vibración al frenar", "ruido frenos"],
+                questions: [
+                    "¿El pedal de freno se siente más suave de lo normal?",
+                    "¿Sientes vibración en el volante al frenar?",
+                    "¿Escuchas un chirrido al frenar?"
+                ],
+                possibleCauses: [
+                    "Pastillas de freno desgastadas",
+                    "Discos de freno deformados",
+                    "Fuga en el sistema hidráulico",
+                    "Bajo nivel de líquido de frenos"
+                ],
+                solutions: [
+                    "Reemplaza pastillas de freno inmediatamente",
+                    "Rectifica o cambia los discos de freno",
+                    "Revisa fugas en el sistema",
+                    "Rellena el líquido de frenos"
+                ],
+                emergency: true
+            },
+            battery: {
+                symptoms: ["batería", "sin corriente", "no enciende luces", "descargada"],
+                questions: [
+                    "¿Las luces se ven más tenues de lo normal?",
+                    "¿El vehículo tuvo problemas para arrancar recientemente?",
+                    "¿Tienes accesorios conectados permanentemente?"
+                ],
+                possibleCauses: [
+                    "Batería vieja o descargada",
+                    "Alternador defectuoso",
+                    "Corto circuito en el sistema eléctrico",
+                    "Consumo parásito excesivo"
+                ],
+                solutions: [
+                    "Recarga o reemplaza la batería",
+                    "Revisa el alternador y sistema de carga",
+                    "Busca cortos circuitos",
+                    "Desconecta accesorios innecesarios"
+                ],
+                emergency: true
+            },
+            lights: {
+                symptoms: ["luces", "focos quemados", "no encienden", "intermitentes"],
+                questions: [
+                    "¿Son las luces delanteras, traseras o interiores?",
+                    "¿Varias luces no funcionan al mismo tiempo?",
+                    "¿Los fusibles se han quemado recientemente?"
+                ],
+                possibleCauses: [
+                    "Focos quemados",
+                    "Fusibles dañados",
+                    "Problema en el switch",
+                    "Conexiones eléctricas sueltas"
+                ],
+                solutions: [
+                    "Reemplaza los focos quemados",
+                    "Revisa y cambia los fusibles",
+                    "Revisa el switch de luces",
+                    "Verifica conexiones y tierra"
+                ],
+                emergency: false
+            },
+            overheat: {
+                symptoms: ["sobrecalentamiento", "temperatura alta", "hierve", "calentamiento"],
+                questions: [
+                    "¿El indicador de temperatura está en rojo?",
+                    "¿Ves vapor saliendo del capó?",
+                    "¿El vehículo pierde refrigerante?"
+                ],
+                possibleCauses: [
+                    "Nivel bajo de refrigerante",
+                    "Ventilador del radiador no funciona",
+                    "Termostato atascado",
+                    "Fuga en el sistema de refrigeración"
+                ],
+                solutions: [
+                    "Detente inmediatamente y deja enfriar el motor",
+                    "Revisa y rellena el refrigerante",
+                    "Revisa el termostato y ventilador",
+                    "Busca fugas en mangueras y radiador"
+                ],
+                emergency: true
+            }
+        };
+
+        // Productos de la tienda
+        const storeProducts = [
+            { id: 1, name: "Batería Automotriz", category: "electrical", price: 1800, description: "Batería de 12V 60Ah para autos medianos", icon: "car-battery" },
+            { id: 2, name: "Pastillas de Freno Delanteras", category: "brakes", price: 850, description: "Juego de 4 pastillas para disco", icon: "brake-pedal" },
+            { id: 3, name: "Filtro de Aire", category: "engine", price: 350, description: "Filtro de aire de alta eficiencia", icon: "wind" },
+            { id: 4, name: "Aceite Sintético 5W-30", category: "engine", price: 450, description: "4 litros de aceite full sintético", icon: "oil-can" },
+            { id: 5, name: "Kit Tuning LED", category: "tuning", price: 1200, description: "Luces LED para interior y exteriores", icon: "lightbulb" },
+            { id: 6, name: "Alerón Deportivo", category: "tuning", price: 2200, description: "Alerón universal ajustable", icon: "car-side" },
+            { id: 7, name: "Amortiguadores Delanteros", category: "engine", price: 2800, description: "Par de amortiguadores gas", icon: "car-crash" },
+            { id: 8, name: "Llantas Aleación 17\"", category: "tuning", price: 8500, description: "Juego de 4 llantas aleación", icon: "tire" },
+            { id: 9, name: "Alternador Reconstruido", category: "electrical", price: 3200, description: "Alternador 90A para autos comunes", icon: "bolt" },
+            { id: 10, name: "Cubrepolvos Personalizados", category: "accessories", price: 600, description: "Set de 4 cubrepolvos con diseño", icon: "palette" },
+            { id: 11, name: "Sistema de Escape Deportivo", category: "tuning", price: 4500, description: "Escape completo para mejor rendimiento", icon: "fire" },
+            { id: 12, name: "Kit Limpieza Interior", category: "accessories", price: 280, description: "Productos para limpieza automotriz", icon: "spray-can" }
+        ];
+
+        // Elementos del DOM
+        const chatbotBody = document.getElementById('chatbotBody');
+        const chatInput = document.getElementById('chatInput');
+        const sendChatBtn = document.getElementById('sendChatBtn');
+        const chatOptions = document.querySelectorAll('.chat-option');
+        const storeGrid = document.getElementById('storeGrid');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const emergencyBtns = document.querySelectorAll('.btn-emergency');
+        const emergencyModal = document.getElementById('emergencyModal');
+        const closeEmergencyModal = document.getElementById('closeEmergencyModal');
+        const emergencyForm = document.getElementById('emergencyForm');
+        const purchaseModal = document.getElementById('purchaseModal');
+        const closePurchaseModal = document.getElementById('closePurchaseModal');
+        const purchaseForm = document.getElementById('purchaseForm');
+        const pretripCheckboxes = document.querySelectorAll('.pretrip-checklist input[type="checkbox"]');
+        const fullPretripBtn = document.getElementById('fullPretripBtn');
+        const notification = document.getElementById('notification');
+        const closeNotification = document.getElementById('closeNotification');
+        const notificationTitle = document.getElementById('notificationTitle');
+        const notificationMessage = document.getElementById('notificationMessage');
+        const whatsappFloat = document.getElementById('whatsappFloat');
+        const chatbotFloat = document.getElementById('chatbotFloat');
+        const chatbotBadge = document.getElementById('chatbotBadge');
+
+        // Variables del chatbot
+        let chatHistory = [];
+        let currentDiagnosis = null;
+        let chatStep = 0;
+
+        // Funciones de utilidad
+        function showNotification(type, title, message, duration = 5000) {
+            notification.className = `notification notification-${type}`;
+            notificationTitle.textContent = title;
+            notificationMessage.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, duration);
+        }
+
+        function addToCart(product) {
+            const existingItem = cart.find(item => item.id === product.id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    quantity: 1
+                });
+            }
+            
+            localStorage.setItem('talpapis_cart', JSON.stringify(cart));
+            updateCartDisplay();
+            showNotification('success', 'Producto agregado', `${product.name} se añadió al carrito`);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            localStorage.setItem('talpapis_cart', JSON.stringify(cart));
+            updateCartDisplay();
+            showNotification('info', 'Producto eliminado', 'El producto se removió del carrito');
+        }
+
+        function updateCartDisplay() {
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p>No hay productos en el carrito</p>';
+                cartTotal.textContent = '$0.00';
+                checkoutBtn.disabled = true;
+                return;
+            }
+            
+            let total = 0;
+            let itemsHTML = '';
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                itemsHTML += `
+                    <div class="cart-item">
+                        <div>
+                            <div style="font-weight: 600;">${item.name}</div>
+                            <div style="font-size: 0.9rem; color: var(--gray);">${item.quantity} x $${item.price.toFixed(2)}</div>
+                        </div>
+                        <div>
+                            <div style="font-weight: 600;">$${itemTotal.toFixed(2)}</div>
+                            <button class="btn btn-outline btn-sm remove-cart-item" data-id="${item.id}" style="margin-top: 0.5rem; font-size: 0.8rem;">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cartItems.innerHTML = itemsHTML;
+            cartTotal.textContent = `$${total.toFixed(2)}`;
+            checkoutBtn.disabled = false;
+            
+            // Agregar eventos a botones de eliminar
+            document.querySelectorAll('.remove-cart-item').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    removeFromCart(productId);
+                });
+            });
+        }
+
+        function loadStoreProducts(category = 'all') {
+            storeGrid.innerHTML = '';
+            
+            const filteredProducts = category === 'all' 
+                ? storeProducts 
+                : storeProducts.filter(product => product.category === category);
+            
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-image">
+                        <i class="fas fa-${product.icon}"></i>
+                    </div>
+                    <div class="product-body">
+                        <h3>${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <div class="product-actions">
+                            <button class="btn btn-outline btn-sm add-to-cart" data-id="${product.id}">
+                                <i class="fas fa-cart-plus"></i> Agregar
+                            </button>
+                            <button class="btn btn-primary btn-sm buy-now" data-id="${product.id}">
+                                <i class="fas fa-bolt"></i> Comprar
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                storeGrid.appendChild(productCard);
+            });
+            
+            // Agregar eventos a botones
+            document.querySelectorAll('.add-to-cart').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    const product = storeProducts.find(p => p.id === productId);
+                    addToCart(product);
+                });
+            });
+            
+            document.querySelectorAll('.buy-now').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    const product = storeProducts.find(p => p.id === productId);
+                    
+                    // Vaciar carrito y agregar solo este producto
+                    cart = [{
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        quantity: 1
+                    }];
+                    
+                    localStorage.setItem('talpapis_cart', JSON.stringify(cart));
+                    updateCartDisplay();
+                    showPurchaseModal();
+                });
+            });
+        }
+
+        function showPurchaseModal() {
+            if (cart.length === 0) {
+                showNotification('warning', 'Carrito vacío', 'Agrega productos al carrito primero');
+                return;
+            }
+            
+            let total = 0;
+            let summaryHTML = '<h3>Resumen de tu compra:</h3><ul style="margin-bottom: 1.5rem;">';
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                summaryHTML += `<li>${item.name} (${item.quantity} x $${item.price}) = $${itemTotal}</li>`;
+            });
+            
+            summaryHTML += `</ul><div style="font-weight: 700; font-size: 1.2rem; margin-bottom: 1.5rem;">Total: $${total.toFixed(2)}</div>`;
+            
+            document.getElementById('purchaseSummary').innerHTML = summaryHTML;
+            purchaseModal.style.display = 'flex';
+        }
+
+        // Funciones del chatbot
+        function addChatMessage(sender, message, options = null) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${sender}`;
+            
+            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            let optionsHTML = '';
+            if (options) {
+                optionsHTML = '<div class="chat-options">';
+                options.forEach(option => {
+                    optionsHTML += `<div class="chat-option" data-option="${option.value}">${option.text}</div>`;
+                });
+                optionsHTML += '</div>';
+            }
+            
+            messageDiv.innerHTML = `
+                <div class="message-text">${message}</div>
+                ${optionsHTML}
+                <div class="message-time">${time}</div>
+            `;
+            
+            chatbotBody.appendChild(messageDiv);
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+            
+            // Agregar eventos a opciones
+            if (options) {
+                messageDiv.querySelectorAll('.chat-option').forEach(option => {
+                    option.addEventListener('click', function() {
+                        const optionValue = this.getAttribute('data-option');
+                        handleChatOption(optionValue);
+                    });
+                });
+            }
+            
+            // Guardar en historial
+            chatHistory.push({ sender, message, time });
+        }
+
+        function startChatbotDiagnosis(problemType) {
+            currentDiagnosis = chatbotKnowledge[problemType];
+            chatStep = 0;
+            
+            addChatMessage('bot', `Has seleccionado: ${problemType}. ${currentDiagnosis.questions[chatStep]}`);
+            
+            if (currentDiagnosis.questions.length > 1) {
+                const options = [
+                    { value: 'yes', text: 'Sí' },
+                    { value: 'no', text: 'No' },
+                    { value: 'not_sure', text: 'No estoy seguro' }
+                ];
+                
+                addChatMessage('bot', 'Por favor responde:', options);
+            }
+        }
+
+        function handleChatOption(optionValue) {
+            if (!currentDiagnosis) {
+                // Opción inicial
+                addChatMessage('user', `Problema: ${optionValue}`);
+                startChatbotDiagnosis(optionValue);
+                return;
+            }
+            
+            addChatMessage('user', optionValue === 'yes' ? 'Sí' : optionValue === 'no' ? 'No' : 'No estoy seguro');
+            
+            chatStep++;
+            
+            if (chatStep < currentDiagnosis.questions.length) {
+                setTimeout(() => {
+                    addChatMessage('bot', currentDiagnosis.questions[chatStep]);
+                    
+                    if (chatStep < currentDiagnosis.questions.length - 1) {
+                        const options = [
+                            { value: 'yes', text: 'Sí' },
+                            { value: 'no', text: 'No' },
+                            { value: 'not_sure', text: 'No estoy seguro' }
+                        ];
+                        
+                        addChatMessage('bot', 'Por favor responde:', options);
+                    } else {
+                        // Última pregunta, mostrar diagnóstico
+                        setTimeout(() => {
+                            showDiagnosisResults();
+                        }, 1000);
+                    }
+                }, 1000);
+            } else {
+                setTimeout(() => {
+                    showDiagnosisResults();
+                }, 1000);
+            }
+        }
+
+        function showDiagnosisResults() {
+            let diagnosisMessage = `<strong>Diagnóstico preliminar:</strong><br><br>`;
+            diagnosisMessage += `<strong>Posibles causas:</strong><br>`;
+            currentDiagnosis.possibleCauses.forEach(cause => {
+                diagnosisMessage += `• ${cause}<br>`;
+            });
+            
+            diagnosisMessage += `<br><strong>Soluciones recomendadas:</strong><br>`;
+            currentDiagnosis.solutions.forEach(solution => {
+                diagnosisMessage += `• ${solution}<br>`;
+            });
+            
+            diagnosisMessage += `<br>`;
+            
+            if (currentDiagnosis.emergency) {
+                diagnosisMessage += `<strong style="color: var(--danger);">¡ATENCIÓN! Este problema puede ser crítico. Te recomendamos no circular y solicitar asistencia.</strong><br><br>`;
+            }
+            
+            diagnosisMessage += `¿Deseas solicitar un servicio basado en este diagnóstico?`;
+            
+            addChatMessage('bot', diagnosisMessage);
+            
+            const options = [
+                { value: 'service_yes', text: 'Sí, solicitar servicio' },
+                { value: 'service_no', text: 'No, gracias' },
+                { value: 'emergency', text: 'Necesito ayuda de emergencia' }
+            ];
+            
+            addChatMessage('bot', 'Selecciona una opción:', options);
+        }
+
+        function handleUserMessage(message) {
+            addChatMessage('user', message);
+            
+            // Análisis simple del mensaje
+            const lowerMessage = message.toLowerCase();
+            let detectedProblem = null;
+            
+            for (const [key, data] of Object.entries(chatbotKnowledge)) {
+                for (const symptom of data.symptoms) {
+                    if (lowerMessage.includes(symptom)) {
+                        detectedProblem = key;
+                        break;
+                    }
+                }
+                if (detectedProblem) break;
+            }
+            
+            setTimeout(() => {
+                if (detectedProblem) {
+                    addChatMessage('bot', `Entiendo que tienes un problema relacionado con "${detectedProblem}".`);
+                    startChatbotDiagnosis(detectedProblem);
+                } else {
+                    addChatMessage('bot', `No he podido identificar claramente el problema. ¿Podrías ser más específico o seleccionar una opción de la lista?`);
+                    
+                    const options = Object.keys(chatbotKnowledge).map(key => ({
+                        value: key,
+                        text: key.charAt(0).toUpperCase() + key.slice(1)
+                    }));
+                    
+                    addChatMessage('bot', 'Selecciona el tipo de problema:', options);
+                }
+            }, 1000);
+        }
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', () => {
+            // Cargar productos de la tienda
+            loadStoreProducts();
+            updateCartDisplay();
+            
+            // Agregar mensaje inicial del chatbot
+            setTimeout(() => {
+                addChatMessage('bot', '¡Hola! Soy tu asistente mecánico virtual. ¿Qué problema presenta tu vehículo? Puedes describir los síntomas o seleccionar una opción:');
+                
+                const options = Object.keys(chatbotKnowledge).map(key => ({
+                    value: key,
+                    text: key.charAt(0).toUpperCase() + key.slice(1)
+                }));
+                
+                addChatMessage('bot', 'Selecciona una categoría:', options);
+            }, 500);
+            
+            // Mostrar badge en el chatbot flotante
+            chatbotBadge.style.display = 'flex';
+        });
+
+        // Event Listeners
+        sendChatBtn.addEventListener('click', () => {
+            const message = chatInput.value.trim();
+            if (message) {
+                handleUserMessage(message);
+                chatInput.value = '';
+            }
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendChatBtn.click();
+            }
+        });
+
+        chatOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                const optionValue = this.getAttribute('data-option');
+                addChatMessage('user', this.textContent);
+                startChatbotDiagnosis(optionValue);
+            });
+        });
+
+        // Categorías de la tienda
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                loadStoreProducts(category);
+            });
+        });
+
+        // Checkout
+        checkoutBtn.addEventListener('click', showPurchaseModal);
+
+        // Servicios de emergencia
+        emergencyBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const service = this.getAttribute('data-service');
+                document.getElementById('emergencyService').value = service;
+                emergencyModal.style.display = 'flex';
+            });
+        });
+
+        closeEmergencyModal.addEventListener('click', () => {
+            emergencyModal.style.display = 'none';
+        });
+
+        emergencyForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const service = document.getElementById('emergencyService').value;
+            const name = document.getElementById('emergencyName').value;
+            const phone = document.getElementById('emergencyPhone').value;
+            const location = document.getElementById('emergencyLocation').value;
+            const description = document.getElementById('emergencyDescription').value;
+            const vehicle = document.getElementById('emergencyVehicle').value;
+            
+            // En una aplicación real, esto enviaría a un servidor
+            const emergencyData = {
+                service,
+                name,
+                phone,
+                location,
+                description,
+                vehicle,
+                timestamp: new Date().toISOString()
+            };
+            
+            console.log('Datos de emergencia:', emergencyData);
+            
+            // Mostrar confirmación
+            showNotification('success', 'Solicitud enviada', `Tu solicitud de ${service} ha sido recibida. Te contactaremos en ${phone} en los próximos minutos.`);
+            
+            // Enviar por WhatsApp (simulado)
+            const whatsappMessage = `EMERGENCIA: ${service}%0A%0ANombre: ${name}%0ATeléfono: ${phone}%0AUbicación: ${location}%0AVehículo: ${vehicle}%0ADescripción: ${description}`;
+            const whatsappUrl = `https://wa.me/523881039121?text=${whatsappMessage}`;
+            
+            // Cerrar modal y resetear formulario
+            emergencyModal.style.display = 'none';
+            emergencyForm.reset();
+            
+            // Abrir WhatsApp
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 1500);
+        });
+
+        // Compra
+        closePurchaseModal.addEventListener('click', () => {
+            purchaseModal.style.display = 'none';
+        });
+
+        purchaseForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('purchaseName').value;
+            const phone = document.getElementById('purchasePhone').value;
+            const address = document.getElementById('purchaseAddress').value;
+            const notes = document.getElementById('purchaseNotes').value;
+            
+            // Calcular total
+            let total = 0;
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+            });
+            
+            // Enviar por WhatsApp
+            let whatsappMessage = `COMPRA DE REFACCIONES TALPAPIS%0A%0ANombre: ${name}%0ATeléfono: ${phone}%0ADirección: ${address}%0A%0AProductos:%0A`;
+            
+            cart.forEach(item => {
+                whatsappMessage += `• ${item.name} (${item.quantity} x $${item.price})%0A`;
+            });
+            
+            whatsappMessage += `%0ATotal: $${total.toFixed(2)}%0A%0ANotas: ${notes || 'Ninguna'}`;
+            
+            const whatsappUrl = `https://wa.me/523881039121?text=${whatsappMessage}`;
+            
+            // Mostrar confirmación
+            showNotification('success', 'Compra confirmada', `Tu pedido ha sido procesado. Te contactaremos para confirmar entrega en ${address}`);
+            
+            // Vaciar carrito
+            cart = [];
+            localStorage.setItem('talpapis_cart', JSON.stringify(cart));
+            updateCartDisplay();
+            
+            // Cerrar modal
+            purchaseModal.style.display = 'none';
+            purchaseForm.reset();
+            
+            // Abrir WhatsApp
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 1500);
+        });
+
+        // Revisión pre-viaje
+        pretripCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const status = this.nextElementSibling.nextElementSibling;
+                if (this.checked) {
+                    status.textContent = 'Listo';
+                    status.className = 'checklist-status checked';
+                } else {
+                    status.textContent = 'Pendiente';
+                    status.className = 'checklist-status pending';
+                }
+            });
+        });
+
+        fullPretripBtn.addEventListener('click', () => {
+            pretripCheckboxes.forEach(checkbox => {
+                checkbox.checked = true;
+                const status = checkbox.nextElementSibling.nextElementSibling;
+                status.textContent = 'Listo';
+                status.className = 'checklist-status checked';
+            });
+            
+            showNotification('success', 'Paquete seleccionado', 'Paquete completo de revisión pre-viaje añadido a tu solicitud');
+            
+            // Redirigir a WhatsApp
+            const message = 'Solicito el paquete completo de revisión pre-viaje de Talpapis. Por favor agendar cita.';
+            const whatsappUrl = `https://wa.me/523881039121?text=${encodeURIComponent(message)}`;
+            
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 1000);
+        });
+
+        // Botones de WhatsApp
+        document.getElementById('whatsappBtn').addEventListener('click', () => {
+            const whatsappUrl = `https://wa.me/523881039121?text=${encodeURIComponent('Hola, me interesa información sobre los servicios de Talpapis')}`;
+            window.open(whatsappUrl, '_blank');
+        });
+
+        document.getElementById('emergencyCallBtn').addEventListener('click', () => {
+            // Simular llamada telefónica
+            showNotification('info', 'Llamando...', 'Marcando al 388 103 9121');
+            
+            // En un dispositivo móvil real, esto iniciaría la llamada
+            // window.location.href = 'tel:3881039121';
+        });
+
+        document.getElementById('emergencyChatBtn').addEventListener('click', () => {
+            emergencyModal.style.display = 'flex';
+        });
+
+        document.getElementById('pretripWhatsappBtn').addEventListener('click', () => {
+            const message = 'Hola, me interesa agendar una revisión pre-viaje para mi vehículo.';
+            const whatsappUrl = `https://wa.me/523881039121?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+
+        whatsappFloat.addEventListener('click', () => {
+            const message = 'Hola Talpapis, necesito información sobre:';
+            const whatsappUrl = `https://wa.me/523881039121?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+
+        chatbotFloat.addEventListener('click', () => {
+            document.getElementById('chatbot').scrollIntoView({ behavior: 'smooth' });
+            chatbotBadge.style.display = 'none';
+        });
+
+        // Cerrar notificación
+        closeNotification.addEventListener('click', () => {
+            notification.classList.remove('show');
+        });
+
+        // Navegación suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Actualizar enlace activo en navegación
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Cerrar modales al hacer clic fuera
+        window.addEventListener('click', (e) => {
+            if (e.target === emergencyModal) {
+                emergencyModal.style.display = 'none';
+            }
+            if (e.target === purchaseModal) {
+                purchaseModal.style.display = 'none';
+            }
+        });
+
+        // Mostrar notificación de bienvenida
+        setTimeout(() => {
+            showNotification('info', '¡Bienvenido a Talpapis!', 'Chatbot de diagnóstico, tienda de refacciones y emergencias 24/7 en Talpa de Allende');
+        }, 1000);
+    </script>
+</body>
+</html>
